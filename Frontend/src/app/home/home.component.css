@@ -1,0 +1,17 @@
+.container{
+    margin: 10px;
+}
+.card {
+    margin-top: 10px;
+}
+
+.configForm{
+    margin: 10px;
+    padding-top: 5px;
+}
+
+.orientacao{
+    display: inline-flex;
+     margin: 10px;
+}
+

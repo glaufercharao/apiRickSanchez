@@ -1,0 +1,70 @@
+<div class="container">
+    <div>
+        <form>
+            <div class="form-group configForm">
+              <label for="findCharacter">Buscar personagem por nome</label>
+              <input 
+                    [(ngModel)]="nome"
+                    [formControl]="formName"
+                    name="nome"
+                    required
+                    type="email" 
+                    class="form-control" 
+                    id="findCharacter" 
+                    aria-describedby="emailHelp" 
+                    placeholder="Informe o nome para pesquisa...">
+
+            </div>
+            <button type="submit" [disabled]="formName.invalid" class="btn btn-info" style="margin-left: 15px;" (click)="findCharacterByName()">Buscar</button>
+          </form>
+    </div>
+
+    <div class="orientacao" *ngFor="let character of characters">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{character.name}}</h5>
+              <h6 class="card-text">{{character.status}}</h6>
+              <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" (click)="mostrarDetalhes(character)">Detalhes</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+  <!-- The Modal -->
+<div class="modal" id="myModal">
+<div class="modal-dialog">
+    <div class="modal-content">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+        <h4 class="modal-title">{{charactersDetail.name}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+        <span>Gender: {{charactersDetail.gender}}</span><br>
+        <span>URL: {{charactersDetail.url}}</span><br><br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Episodeos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let epi of charactersDetail.episode">
+                <td>{{epi}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+    </div>
+
+    </div>
+</div>
+</div>
